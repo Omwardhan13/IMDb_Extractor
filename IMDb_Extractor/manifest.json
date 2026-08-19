@@ -17,5 +17,11 @@
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "imdb-extractor@omwardhan.com",
+      "strict_min_version": "109.0"
+    }
   }
 }
