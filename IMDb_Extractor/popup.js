@@ -136,7 +136,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Set UI to loading state
     scrapeBtn.disabled = true;
-    btnIcon.innerHTML = '<span class="spinner-icon"></span>';
+    btnIcon.replaceChildren();
+    const spinner = document.createElement('span');
+    spinner.className = 'spinner-icon';
+    btnIcon.appendChild(spinner);
     btnText.innerText = 'Scraping...';
     showProgress('Initializing scraper...', '0');
 
@@ -148,16 +151,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
     chrome.runtime.onMessage.addListener(messageListener);
 
-    const originalBtnIcon = `
-      <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor">
-        <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
-      </svg>
-    `;
-
     const resetBtnState = () => {
       chrome.runtime.onMessage.removeListener(messageListener);
       scrapeBtn.disabled = false;
-      btnIcon.innerHTML = originalBtnIcon;
+      btnIcon.replaceChildren();
+      const svgNS = "http://www.w3.org/2000/svg";
+      const svg = document.createElementNS(svgNS, "svg");
+      svg.setAttribute("viewBox", "0 0 24 24");
+      svg.setAttribute("width", "17");
+      svg.setAttribute("height", "17");
+      svg.setAttribute("fill", "currentColor");
+      const path = document.createElementNS(svgNS, "path");
+      path.setAttribute("d", "M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z");
+      svg.appendChild(path);
+      btnIcon.appendChild(svg);
       btnText.innerText = 'Scrape & Export';
     };
 

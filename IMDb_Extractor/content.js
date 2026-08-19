@@ -44,8 +44,23 @@
       `;
       document.body.appendChild(toast);
     }
-    const badge = count !== null && count !== undefined ? `<span style="background:#f5c518;color:#000;padding:2px 6px;border-radius:4px;font-weight:bold;font-size:11px;">${count} items</span>` : '';
-    toast.innerHTML = `<span style="color:#f5c518;font-size:16px;">⚡</span> <span>${text}</span> ${badge}`;
+    toast.replaceChildren();
+    
+    const iconSpan = document.createElement("span");
+    iconSpan.style.cssText = "color:#f5c518;font-size:16px;";
+    iconSpan.textContent = "⚡";
+    toast.appendChild(iconSpan);
+
+    const textSpan = document.createElement("span");
+    textSpan.textContent = text;
+    toast.appendChild(textSpan);
+
+    if (count !== null && count !== undefined) {
+      const badgeSpan = document.createElement("span");
+      badgeSpan.style.cssText = "background:#f5c518;color:#000;padding:2px 6px;border-radius:4px;font-weight:bold;font-size:11px;";
+      badgeSpan.textContent = `${count} items`;
+      toast.appendChild(badgeSpan);
+    }
     toast.style.opacity = "1";
     toast.style.transform = "translateY(0)";
   }
