@@ -3,7 +3,7 @@
   "name": "IMDb Extractor",
   "version": "1.0.0",
   "description": "Export and backup your IMDb Watch History, Watchlists, and Custom Lists to CSV, Markdown, JSON, TXT, or HTML.",
-  "permissions": ["activeTab", "scripting", "tabs"],
+  "permissions": ["activeTab", "scripting"],
   "action": {
     "default_popup": "popup.html",
     "default_title": "IMDb Extractor",

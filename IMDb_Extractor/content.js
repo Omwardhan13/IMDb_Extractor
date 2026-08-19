@@ -112,7 +112,7 @@
       let lastScrollY = -1;
       let unchangedTicks = 0;
       let totalTicks = 0;
-      const MAX_TICKS = 120; // 30 seconds max safety timeout
+      const MAX_TICKS = 1200; // 5 minutes max safety timeout (for huge watchlists)
 
       const finishScrolling = () => {
         clearInterval(scrollInterval);
