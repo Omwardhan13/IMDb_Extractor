@@ -29,7 +29,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Check active tab on popup open
   let activeTab = null;
   try {
-    const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+    let tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (!tabs || tabs.length === 0) {
+      tabs = await chrome.tabs.query({ active: true });
+    }
     activeTab = tabs[0] || null;
 
     if (activeTab && activeTab.url && activeTab.url.includes('imdb.com')) {
@@ -126,7 +129,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
 
     // Re-verify tab
-    const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+    let tabs = await chrome.tabs.query({ active: true, currentWindow: true });
+    if (!tabs || tabs.length === 0) {
+      tabs = await chrome.tabs.query({ active: true });
+    }
     const tab = tabs[0] || null;
 
     if (!tab || !tab.url || !tab.url.includes('imdb.com')) {
