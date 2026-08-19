@@ -57,11 +57,18 @@ While IMDb does not provide a native one-click export for watch history and comp
 ## Installation
 
 ### Method 1: Pre-Packaged Release (Recommended)
-1. Download the latest release `imdb-extractor-v1.0.0.zip` from the [Releases](https://github.com/Omwardhan13/IMDb_Extractor/releases) section.
+1. Download the latest release `.zip` from the [Releases](https://github.com/Omwardhan13/IMDb_Extractor/releases) section.
+   - For Chrome: Download `imdb-extractor-v1.0.0.zip`
+   - For Firefox: Download `imdb-extractor-v1.0.0-firefox.zip`
 2. Extract the ZIP archive to a folder on your computer.
-3. Open Google Chrome and navigate to `chrome://extensions/`.
-4. Enable **Developer mode** in the top-right corner.
-5. Click **Load unpacked** in the top-left corner and select the extracted folder.
+3. **For Chrome:**
+   - Navigate to `chrome://extensions/`.
+   - Enable **Developer mode** (top-right corner).
+   - Click **Load unpacked** (top-left) and select the extracted folder.
+4. **For Firefox:**
+   - Navigate to `about:debugging#/runtime/this-firefox`.
+   - Click **Load Temporary Add-on...**
+   - Select the `manifest.json` file inside the extracted folder.
 
 ### Method 2: Clone from Source
 ```bash
@@ -78,7 +85,7 @@ In `chrome://extensions/`, enable **Developer mode**, click **Load unpacked**, a
 
 ## Usage
 
-1. Navigate to any supported IMDb list or watch history page in Google Chrome.
+1. Navigate to any supported IMDb list or watch history page in Google Chrome or Mozilla Firefox.
 2. Click the **IMDb Extractor** icon in the browser toolbar.
 3. Select your target **Export Format** and choose the desired **Metadata Fields**.
 4. Click **Scrape & Export**.
