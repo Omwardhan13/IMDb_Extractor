@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo-badge">IMDb</div>
+    <div class="header-info">
+      <h1 class="header-title">IMDb Extractor</h1>
+      <p class="header-subtitle">Export your watched titles & custom lists</p>
+    </div>
+  </header>
+
+  <!-- Live Page Status Indicator -->
+  <div id="pageStatus" class="page-status ready">
+    <span class="status-dot"></span>
+    <span id="pageStatusText">Checking page connection...</span>
+  </div>
+
+  <!-- Export Format Selection -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-label">Export Format</span>
+    </div>
+    <div class="select-wrapper">
+      <select id="exportFormat">
+        <option value="md">📄 Markdown Document (.md)</option>
+        <option value="csv">📊 Spreadsheet CSV (.csv)</option>
+        <option value="json">⚡ Structured JSON (.json)</option>
+        <option value="txt">📝 Plain Text Summary (.txt)</option>
+        <option value="html">🌐 Interactive Web Page (.html)</option>
+      </select>
+      <span class="select-arrow">▼</span>
+    </div>
+  </div>
+
+  <!-- Metadata Toggles -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-label">Metadata Fields</span>
+      <div class="action-links">
+        <button id="btnSelectAll" class="pill-link" type="button">Select All</button>
+        <button id="btnClearAll" class="pill-link" type="button">Clear</button>
+      </div>
+    </div>
+
+    <div class="checkbox-grid">
+      <!-- Title & Year is always locked -->
+      <label class="checkbox-tile locked" title="Always included">
+        <input type="checkbox" checked disabled>
+        <span class="tile-text"><span class="tile-icon">🔒</span> Title & Year</span>
+      </label>
+
+      <label class="checkbox-tile">
+        <input type="checkbox" id="chkUrl" class="meta-check">
+        <span class="tile-text"><span class="tile-icon">🔗</span> IMDb URL</span>
+      </label>
+
+      <label class="checkbox-tile">
+        <input type="checkbox" id="chkRating" class="meta-check">
+        <span class="tile-text"><span class="tile-icon">⭐</span> Rating & Votes</span>
+      </label>
+
+      <label class="checkbox-tile">
+        <input type="checkbox" id="chkRuntime" class="meta-check">
+        <span class="tile-text"><span class="tile-icon">⏱️</span> Runtime</span>
+      </label>
+
+      <label class="checkbox-tile">
+        <input type="checkbox" id="chkAge" class="meta-check">
+        <span class="tile-text"><span class="tile-icon">🏷️</span> Certificate</span>
+      </label>
+
+      <label class="checkbox-tile">
+        <input type="checkbox" id="chkCast" class="meta-check">
+        <span class="tile-text"><span class="tile-icon">🎬</span> Cast & Director</span>
+      </label>
+
+      <label class="checkbox-tile" style="grid-column: span 2;">
+        <input type="checkbox" id="chkPlot" class="meta-check">
+        <span class="tile-text"><span class="tile-icon">📝</span> Plot Summary</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Action Button -->
+  <button id="scrapeBtn" class="btn-primary">
+    <span id="btnIcon" class="btn-icon-svg">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor">
+        <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
+      </svg>
+    </span>
+    <span id="btnText">Scrape & Export</span>
+  </button>
+
+  <!-- Live Status & Feedback Area -->
+  <div id="statusContainer" class="status-container">
+    <!-- Active Progress Card -->
+    <div id="progressBox" class="status-card" style="display: none;">
+      <div class="status-header">
+        <span class="status-label">
+          <span class="spinner-icon"></span>
+          <span id="statusMessage">Scrolling list...</span>
+        </span>
+        <span id="statusCount" class="count-badge">0 items</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-bar-active"></div>
+      </div>
+    </div>
+
+    <!-- Error Box -->
+    <div id="errorBox" class="alert-box error" style="display: none;">
+      <span>⚠️</span>
+      <span id="errorMessage">Please open an IMDb list or watch history page first.</span>
+    </div>
+
+    <!-- Success Box -->
+    <div id="successBox" class="alert-box success" style="display: none;">
+      <span>✓</span>
+      <span id="successMessage">Export complete! File downloaded.</span>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
