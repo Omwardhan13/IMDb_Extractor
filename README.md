@@ -57,7 +57,7 @@ While IMDb does not provide a native one-click export for watch history and comp
 ## Installation
 
 ### Method 1: Pre-Packaged Release (Recommended)
-1. Download the latest release `.zip` from the [Releases](https://github.com/Omwardhan13/IMDb_Extractor/releases) section.
+1. Download the latest release `imdb-extractor-v1.0.0.zip` from the [Releases](https://github.com/Omwardhan13/IMDb_Extractor/releases) section.
 2. Extract the ZIP archive to a folder on your computer.
 3. Open Google Chrome and navigate to `chrome://extensions/`.
 4. Enable **Developer mode** in the top-right corner.
